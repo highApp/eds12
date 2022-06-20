@@ -10,6 +10,7 @@ import 'package:eds/utilities/customloader.dart';
 import 'package:eds/utilities/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:local_auth/auth_strings.dart';
 import 'package:local_auth/local_auth.dart';
 
 import '../../Color.dart';
@@ -186,7 +187,7 @@ class _LoginState extends State<Login> {
         _authorized = 'Authenticating';
       });
       authenticated = await auth.authenticate(
-          localizedReason: 'Scan your fingerprint/face to authenticat',
+          localizedReason: 'Scan your fingerprint',
           useErrorDialogs: true,
           stickyAuth: true);
       setState(() {
@@ -351,6 +352,30 @@ class _LoginState extends State<Login> {
               SizedBox(
                 height: size.height * 0.03,
               ),
+              // Column(
+              //   children: [
+              //     Row(
+              //       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              //       children: [
+              //         _supportState == _SupportState.supported
+              //             ? GestureDetector(
+              //           onTap: () {
+              //             //_btnActionSigniLoacalAuth();
+              //             facelogin();
+              //           },
+              //           child: Image.asset(
+              //             "assets/images/faceimg.png",
+              //             height: size.height * 0.1,
+              //           ),
+              //         )
+              //             : Container()
+              //       ],
+              //     ),
+              //   ],
+              // ),
+              SizedBox(
+                height: size.height * 0.03,
+              ),
               Padding(
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 8),
@@ -381,6 +406,49 @@ class _LoginState extends State<Login> {
         ),
       ),
     );
+  }
+
+  void facelogin() async {
+    final isAuthenticated = await LocalAuthApi.authenticate();
+
+    if (isAuthenticated) {
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(builder: (context) => Dashboard(
+          employerId: employerid.toString(),
+        )),
+
+      );
+    }  }
+}
+
+class LocalAuthApi {
+  static final _auth = LocalAuthentication();
+
+  static Future<bool> hasBiometrics() async {
+    try {
+      return await _auth.canCheckBiometrics;
+    } on PlatformException catch (e) {
+      return false;
+    }
+  }
+
+  static Future<bool> authenticate() async {
+    final isAvailable = await hasBiometrics();
+
+    if (!isAvailable) return false;
+
+    try {
+      return await _auth.authenticateWithBiometrics(
+        androidAuthStrings: AndroidAuthMessages(
+          signInTitle: 'Face ID Required',
+        ),
+        localizedReason: 'Scan Face to Authenticate',
+        useErrorDialogs: true,
+        stickyAuth: true,
+      );
+    } on PlatformException catch (e) {
+      return false;
+    }
   }
 }
 

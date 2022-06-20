@@ -241,7 +241,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
                   ),
                   IconButton(
                       onPressed: () {
-                        HelperFunctions.saveInPreference("userId", "");
+                        //HelperFunctions.saveInPreference("userId", "");
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(builder: (context) => Login()),
                             (Route<dynamic> route) => false);

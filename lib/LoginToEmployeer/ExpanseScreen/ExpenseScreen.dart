@@ -122,7 +122,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
           backgroundColor: colorPrimary,
           centerTitle: true,
           title: Text(
-            "Expense Screen",
+            "Sale Screen",
             style: TextStyle(
                 color: colorWhite,
                 fontWeight: FontWeight.w900,
@@ -269,7 +269,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                               letterSpacing: 0.16,
                                               fontSize: size.height * 0.02),
                                         ),
-                                        Text(
+                                        Text("\$" +
                                           widget.singleStock.labour.toString(),
                                           style: TextStyle(
                                               color: colorgrey,
@@ -294,7 +294,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                               letterSpacing: 0.16,
                                               fontSize: size.height * 0.02),
                                         ),
-                                        Text(
+                                        Text("\$" +
                                           widget.singleStock.optionalAmount
                                               .toString(),
                                           style: TextStyle(
@@ -339,7 +339,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                               onPressed: () {
                                 _btnActionaddQuantity(context);
                               },
-                              text: "Add Expense",
+                              text: "Add Sale",
                               textColor: colorWhite,
                               backcolor: colorPrimary,
                             )

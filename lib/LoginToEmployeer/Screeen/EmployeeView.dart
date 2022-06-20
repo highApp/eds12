@@ -4,6 +4,7 @@ import 'package:eds/LoginToEmployeer/Screeen/DismissDialog.dart';
 import 'package:eds/LoginToEmployeer/Screeen/DocumentsView.dart';
 import 'package:eds/LoginToEmployeer/Screeen/FlagView.dart';
 import 'package:eds/LoginToEmployeer/Screeen/PayRollView.dart';
+import 'package:eds/LoginToEmployeer/Screeen/employmenthistory.dart';
 import 'package:eds/managers/api_manager.dart';
 import 'package:eds/models/homeDashboardObject.dart';
 import 'package:eds/utilities/api_constants.dart';
@@ -361,6 +362,19 @@ class _EmployeeViewState extends State<EmployeeView> {
                                       builder: (context) => FlagView(
                                             id: widget.singleUser!.gid,
                                           )),
+                                );
+                              },
+                            ),
+                            _textInput(
+                              text: "Employment History",
+                              image: "assets/images/left.png",
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => employmenthistory(gid: widget.singleUser!.gid,
+                                       // id: widget.singleUser!.gid,
+                                      )),
                                 );
                               },
                             ),

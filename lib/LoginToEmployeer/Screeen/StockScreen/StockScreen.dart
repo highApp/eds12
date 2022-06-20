@@ -148,8 +148,8 @@ class _StockScreenState extends State<StockScreen>
                   ? _bottomBarNavigation('All Stock', true)
                   : _bottomBarNavigation('All Stock', false),
               _tabController!.index == 1
-                  ? _bottomBarNavigation('Remaining', true)
-                  : _bottomBarNavigation('Remaining', false),
+                  ? _bottomBarNavigation('Sale Stock', true)
+                  : _bottomBarNavigation('Sale Stock', false),
             ]),
       ),
       body: Column(

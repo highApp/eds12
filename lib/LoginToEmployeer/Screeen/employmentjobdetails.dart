@@ -1,3 +1,7 @@
+import 'package:eds/Login_As_Employee/Screen/Comments.dart';
+import 'package:eds/Login_As_Employee/Screen/Flag.dart';
+import 'package:eds/Login_As_Employee/Screen/PayRoll.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:eds/Login_As_Employee/Screen/EmployeeDocumentsView.dart';
 import 'package:eds/Login_As_Employee/Screen/contactEmployeer.dart';
 import 'package:eds/Widget/ClockIN.dart';
@@ -6,23 +10,19 @@ import 'package:eds/utilities/helper_functions.dart';
 import 'package:flutter/material.dart';
 
 import '../../Color.dart';
-import 'Comments.dart';
 import 'Dismiss.dart';
-import 'Flag.dart';
-import 'PayRoll.dart';
-
-class JobDetail extends StatefulWidget {
+class employmentjobdetails extends StatefulWidget {
   Employee? employeeData;
   History? history;
   bool isHistory;
 
-  JobDetail({this.employeeData, this.history, this.isHistory = false});
+  employmentjobdetails({this.employeeData, this.history, this.isHistory = false});
 
   @override
   _JobDetailState createState() => _JobDetailState();
 }
 
-class _JobDetailState extends State<JobDetail> {
+class _JobDetailState extends State<employmentjobdetails> {
   String? emplyeeImage;
   @override
   void initState() {
@@ -88,7 +88,7 @@ class _JobDetailState extends State<JobDetail> {
                             decoration: BoxDecoration(
                                 color: Colors.white,
                                 borderRadius:
-                                    BorderRadius.circular(size.width * 0.06)),
+                                BorderRadius.circular(size.width * 0.06)),
                             child: CircleAvatar(
                               maxRadius: size.width * 0.05,
                               backgroundColor: Colors.black,
@@ -140,8 +140,8 @@ class _JobDetailState extends State<JobDetail> {
                             context,
                             MaterialPageRoute(
                                 builder: (context) => Clock_In(
-                                      gid: widget.employeeData?.gid.toString()??'',
-                                    )),
+                                  gid: widget.employeeData?.gid.toString()??'',
+                                )),
                           );
                         },
                         child: Row(
@@ -158,12 +158,12 @@ class _JobDetailState extends State<JobDetail> {
                             Text(
                               widget.isHistory == true
                                   ? widget.history!.jobTitle == null
-                                      ? ""
-                                      : widget.history!.jobTitle.toString()
+                                  ? ""
+                                  : widget.history!.jobTitle.toString()
                                   : widget.employeeData!.jobTitle == null
-                                      ? ""
-                                      : widget.employeeData!.jobTitle
-                                          .toString(),
+                                  ? ""
+                                  : widget.employeeData!.jobTitle
+                                  .toString(),
                               style: TextStyle(
                                   color: colorTex,
                                   fontSize: size.width * 0.033,
@@ -183,13 +183,13 @@ class _JobDetailState extends State<JobDetail> {
 
                           widget.isHistory == true
                               ? Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => EmployeeDocumentsView(
-                                      gid:
-                                          widget.employeeData?.gid.toString())))
+                              builder: (context) => EmployeeDocumentsView(
+                                  gid:
+                                  widget.employeeData?.gid.toString())))
                               : Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => EmployeeDocumentsView(
-                                      gid: widget.employeeData?.gid
-                                          .toString())));
+                              builder: (context) => EmployeeDocumentsView(
+                                  gid: widget.employeeData?.gid
+                                      .toString())));
                         },
                       ),
                       _textInput(
@@ -198,9 +198,31 @@ class _JobDetailState extends State<JobDetail> {
                         onTap: () {
                           widget.isHistory == false
                               ? Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PayRoll(
+                                  gid: widget.employeeData?.gid
+                                      .toString(),
+                                )),
+                          )
+                              : Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => PayRoll(
+                                  gid: widget.history?.gid.toString(),
+                                )),
+                          );
+                        },
+                      ),
+                      _textInput(
+                        text: "General Comments",
+                        image: "assets/images/left.png",
+                        onTap: () {
+                          widget.isHistory == false
+                              ? Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PayRoll(
+                                      builder: (context) => Comments(
                                             gid: widget.employeeData?.gid
                                                 .toString(),
                                           )),
@@ -208,54 +230,32 @@ class _JobDetailState extends State<JobDetail> {
                               : Navigator.push(
                                   context,
                                   MaterialPageRoute(
-                                      builder: (context) => PayRoll(
+                                      builder: (context) => Comments(
                                             gid: widget.history?.gid.toString(),
                                           )),
                                 );
                         },
                       ),
-                      // _textInput(
-                      //   text: "General Comments",
-                      //   image: "assets/images/left.png",
-                      //   onTap: () {
-                      //     widget.isHistory == false
-                      //         ? Navigator.push(
-                      //             context,
-                      //             MaterialPageRoute(
-                      //                 builder: (context) => Comments(
-                      //                       gid: widget.employeeData?.gid
-                      //                           .toString(),
-                      //                     )),
-                      //           )
-                      //         : Navigator.push(
-                      //             context,
-                      //             MaterialPageRoute(
-                      //                 builder: (context) => Comments(
-                      //                       gid: widget.history?.gid.toString(),
-                      //                     )),
-                      //           );
-                      //   },
-                      // ),
                       _textInput(
                         text: "Flag",
                         image: "assets/images/left.png",
                         onTap: () {
                           widget.isHistory == false
                               ? Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Flag(
-                                            id: widget.employeeData?.gid
-                                                .toString(),
-                                          )),
-                                )
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Flag(
+                                  id: widget.employeeData?.gid
+                                      .toString(),
+                                )),
+                          )
                               : Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => Flag(
-                                            id: widget.history?.gid.toString(),
-                                          )),
-                                );
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => Flag(
+                                  id: widget.history?.gid.toString(),
+                                )),
+                          );
                         },
                       ),
                       // _textInput(
@@ -313,12 +313,12 @@ class _JobDetailState extends State<JobDetail> {
                     onPressed: () {
                       Navigator.of(context).push(MaterialPageRoute(
                           builder: (context) => ContactEmployer(
-                                gid: widget.employeeData!.gid.toString(),
-                              )));
+                            gid: widget.employeeData!.gid.toString(),
+                          )));
                     },
                     child: Padding(
                       padding:
-                          EdgeInsets.symmetric(vertical: size.width * 0.023),
+                      EdgeInsets.symmetric(vertical: size.width * 0.023),
                       child: Text(
                         "Contact Us",
                         style: TextStyle(
