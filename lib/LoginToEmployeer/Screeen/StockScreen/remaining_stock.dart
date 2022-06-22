@@ -258,6 +258,34 @@ class _RemainingStockState extends State<RemainingStock> {
                     height: 1,
                     color: Colors.black12,
                   ),
+                  Row(mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.only(left: size.width * 0.59,top: 10),
+                        child: Text("Edit",style: TextStyle(
+                          fontStyle: FontStyle.normal,
+                          fontSize: 16,
+                          fontWeight:FontWeight.bold
+                        ),),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: size.width * 0.06,top: 10),
+                        child: Text("Sale",style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 16,
+                            fontWeight:FontWeight.bold
+                        ),),
+                      ),
+                      Padding(
+                        padding: EdgeInsets.only(left: size.width * 0.05,top: 10),
+                        child: Text("Delete",style: TextStyle(
+                            fontStyle: FontStyle.normal,
+                            fontSize: 16,
+                            fontWeight:FontWeight.bold
+                        ),),
+                      ),
+                    ],
+                  ),
                   Padding(
                     padding: EdgeInsets.symmetric(
                         horizontal: size.width * 0.05,

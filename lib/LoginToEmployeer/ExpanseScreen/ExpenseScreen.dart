@@ -212,7 +212,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                           "Amount",
                                           style: TextStyle(
                                               color: colorgrey,
-                                              fontWeight: FontWeight.w600,
+                                              fontWeight: FontWeight.w800,
                                               letterSpacing: 0.16,
                                               fontSize: size.height * 0.02),
                                         ),
@@ -239,7 +239,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                           "Quantity",
                                           style: TextStyle(
                                               color: colorgrey,
-                                              fontWeight: FontWeight.w600,
+                                              fontWeight: FontWeight.w800,
                                               letterSpacing: 0.16,
                                               fontSize: size.height * 0.02),
                                         ),
@@ -265,7 +265,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                           "Labour",
                                           style: TextStyle(
                                               color: colorgrey,
-                                              fontWeight: FontWeight.w600,
+                                              fontWeight: FontWeight.w800,
                                               letterSpacing: 0.16,
                                               fontSize: size.height * 0.02),
                                         ),
@@ -290,7 +290,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                                           "Optional amount",
                                           style: TextStyle(
                                               color: colorgrey,
-                                              fontWeight: FontWeight.w600,
+                                              fontWeight: FontWeight.w800,
                                               letterSpacing: 0.16,
                                               fontSize: size.height * 0.02),
                                         ),
@@ -316,7 +316,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                               height: size.height * 0.02,
                             ),
                             LabelWidget(
-                              labelText: "Add quantiy",
+                              labelText: "Add Sale Quantiy",
                               controller: quantityController,
                               inputType: TextInputType.number,
                             ),
@@ -324,7 +324,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                               height: size.height * 0.02,
                             ),
                             LabelWidget(
-                              labelText: "sale unit price",
+                              labelText: "Sale Unit Price",
                               controller: saleamontController,
                               inputType: TextInputType.number,
                             ),
@@ -332,7 +332,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                               height: size.height * 0.02,
                             ),
                             LabelWidget(
-                              labelText: "payee name",
+                              labelText: "Add Payee Name",
                               controller: pnameController,
                             ),
                             custom_btn(
