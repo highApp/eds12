@@ -162,7 +162,7 @@ class _StockScreenState extends State<StockScreen>
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Container(
-                  width: size.width * 0.38,
+                  width: size.width * 0.52,
                   height: size.width * 0.35,
                   decoration: BoxDecoration(
                     color: Colors.white.withOpacity(0.7),
@@ -230,7 +230,7 @@ class _StockScreenState extends State<StockScreen>
                     );
                   },
                   child: Container(
-                    width: size.width * 0.38,
+                    width: size.width * 0.30,
                     height: size.width * 0.35,
                     decoration: BoxDecoration(
                       color: Colors.white.withOpacity(0.7),

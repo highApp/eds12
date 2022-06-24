@@ -26,17 +26,17 @@ class Profit {
     this.totalRemaining,
   });
 
-  int? totalProfit;
-  int? totalExpense;
-  int? totalLose;
-  int? totalAmount;
-  int? totalRemaining;
+  var totalProfit;
+  var totalExpense;
+  var totalLose;
+  var totalAmount;
+  var totalRemaining;
 
   factory Profit.fromMap(Map<String, dynamic> json) => Profit(
         totalProfit: json["totalProfit"] == null ? null : json["totalProfit"],
         totalExpense:
             json["totalExpense"] == null ? null : json["totalExpense"],
-        totalLose: json["totalLose"] == null ? null : json["totalLose"],
+        totalLose: json["totalLose"] == null ?  null : json["totalLose"],
         totalAmount: json["totalAmount"] == null ? null : json["totalAmount"],
         totalRemaining:
             json["totalRemaining"] == null ? null : json["totalRemaining"],

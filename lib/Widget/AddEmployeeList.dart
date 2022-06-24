@@ -108,7 +108,7 @@ class _AddEmployeeState extends State<AddEmployee> {
                             SizedBox(
                               width: size.width * 0.09,
                             ),
-                            _employeeDetail(widget.user[index].jobTitle, size),
+                            _employeeDetail(widget.user[index].jobTitle,size),
                           ],
                         ),
 

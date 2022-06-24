@@ -277,7 +277,7 @@ class _RemainingStockState extends State<RemainingStock> {
                         ),),
                       ),
                       Padding(
-                        padding: EdgeInsets.only(left: size.width * 0.05,top: 10),
+                        padding: EdgeInsets.only(left: size.width * 0.03,top: 10),
                         child: Text("Delete",style: TextStyle(
                             fontStyle: FontStyle.normal,
                             fontSize: 16,
