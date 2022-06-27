@@ -214,7 +214,7 @@ class _AddEmployeeState extends State<AddEmployee> {
 
   Widget _employeeDetail(text, size) {
     return Container(
-      width: size.width * 0.12,
+      width: size.width * 0.15,
       child: Text(
         text == null ? "" : text,
         maxLines: 2,

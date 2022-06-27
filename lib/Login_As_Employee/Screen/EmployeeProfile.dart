@@ -201,7 +201,7 @@ class _EmployeeProfileScreenState extends State<EmployeeProfileScreen> {
                   ),
                   IconButton(
                       onPressed: () {
-                        HelperFunctions.saveInPreference("employeeGid", "");
+                        //HelperFunctions.saveInPreference("employeeGid", "");
                         Navigator.of(context).pushAndRemoveUntil(
                             MaterialPageRoute(builder: (context) => SignIn()),
                             (Route<dynamic> route) => false);

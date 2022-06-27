@@ -41,10 +41,10 @@ class _UpdateStockcreenState extends State<UpdateStockcreen> {
 
     amountController.text = widget.stockItem.amount.toString();
     descController.text = widget.stockItem.description.toString();
-    rentController.text = widget.stockItem.rent.toString();
-    optionalController.text = widget.stockItem.optionalAmount.toString();
-    labourController.text = widget.stockItem.labour.toString();
-    quantityController.text = widget.stockItem.quantity.toString();
+    //rentController.text = widget.stockItem.rent.toString();
+    //optionalController.text = widget.stockItem.optionalAmount.toString();
+   // labourController.text = widget.stockItem.labour.toString();
+    //quantityController.text = widget.stockItem.quantity.toString();
     stockImage = widget.stockItem.image;
 
     super.initState();
@@ -289,6 +289,15 @@ class _UpdateStockcreenState extends State<UpdateStockcreen> {
                   max: 1,
                   controller: optionalController,
                   inputType: TextInputType.number,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 30),
+                      child: Container(child: Text("Available Stock: "+widget.stockItem.quantity.toString())),
+                    ),
+                  ],
                 ),
                 LabelWidget(
                   labelText: 'Quantity',

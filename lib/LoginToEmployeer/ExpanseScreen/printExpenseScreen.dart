@@ -34,9 +34,10 @@ class _PrintexpenseScreenState extends State<PrintexpenseScreen> {
     'right',
   ]; // Option 2
   String? _selectedLocation; // Option 2
+  String? stockImage="https://eds.greenspoints.com/public/images/eds.png";
 
   final imagePicker = ImagePicker();
-  File? _image;
+  File? _image ;
   List<CustomMultipartObject> files = [];
   _openPDF(String fileName) async {
     String url = fileName;
@@ -76,23 +77,24 @@ class _PrintexpenseScreenState extends State<PrintexpenseScreen> {
   _btnActionprint(BuildContext context) {
     FocusScope.of(context).requestFocus(new FocusNode());
 
-    if (_image == null) {
-      HelperFunctions.showAlert(
-          context: context,
-          header: "EDS",
-          widget: Text("Logo is required"),
-          btnDoneText: "ok",
-          onDone: () {},
-          onCancel: () {});
-    } else if (_selectedLocation == null) {
-      HelperFunctions.showAlert(
-          context: context,
-          header: "EDS",
-          widget: Text("Olease select logo is Position"),
-          btnDoneText: "ok",
-          onDone: () {},
-          onCancel: () {});
-    } else if (fromDataController.text == '') {
+    // if (_image == null) {
+    //   HelperFunctions.showAlert(
+    //       context: context,
+    //       header: "EDS",
+    //       widget: Text("Logo is required"),
+    //       btnDoneText: "ok",
+    //       onDone: () {},
+    //       onCancel: () {});
+    // } else if (_selectedLocation == null) {
+    //   HelperFunctions.showAlert(
+    //       context: context,
+    //       header: "EDS",
+    //       widget: Text("Olease select logo is Position"),
+    //       btnDoneText: "ok",
+    //       onDone: () {},
+    //       onCancel: () {});
+    // } else
+      if (fromDataController.text == '') {
       HelperFunctions.showAlert(
           context: context,
           header: "EDS",
@@ -133,7 +135,10 @@ class _PrintexpenseScreenState extends State<PrintexpenseScreen> {
     FocusScope.of(context).requestFocus(FocusNode());
     CustomMultipartObject obj =
         CustomMultipartObject(file: _image, param: "logo");
-    files.add(obj);
+    if (_image != null) {
+      files.add(obj);
+    }
+    //files.add(obj);
     ApiCallMultiPart networkCall =
         ApiCallMultiPart(APIConstants.printExpense, body, header);
 
@@ -189,6 +194,7 @@ class _PrintexpenseScreenState extends State<PrintexpenseScreen> {
                   CustomBottomSheetCamera.bottomSheet(context, () {
                     chooseImage(context, ImageSource.camera);
                   }, () {
+
                     _getFile();
                   });
                 },
@@ -205,6 +211,16 @@ class _PrintexpenseScreenState extends State<PrintexpenseScreen> {
                             fit: BoxFit.cover,
                           ),
                         )
+                      : stockImage != null
+                      ? ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Image.network(
+                      stockImage.toString(),
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                  )
                       : Container(
                           decoration: BoxDecoration(
                               color: Colors.grey[200],

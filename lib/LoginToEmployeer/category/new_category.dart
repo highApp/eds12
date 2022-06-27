@@ -24,6 +24,7 @@ class NewCategoryScreen extends StatefulWidget {
 }
 
 class _NewCategoryScreenState extends State<NewCategoryScreen> {
+  String? stockImage="https://eds.greenspoints.com/public/images/eds.png";
   File? _image;
   bool uploadingImage = false;
   bool isLoading = false;
@@ -63,7 +64,9 @@ class _NewCategoryScreenState extends State<NewCategoryScreen> {
     FocusScope.of(context).requestFocus(FocusNode());
     CustomMultipartObject obj =
         CustomMultipartObject(file: _image, param: "image");
-    files.add(obj);
+    if (_image != null) {
+      files.add(obj);
+    }
     ApiCallMultiPart networkCall =
         ApiCallMultiPart(APIConstants.addCategory, body, header);
 
@@ -127,7 +130,7 @@ class _NewCategoryScreenState extends State<NewCategoryScreen> {
         body: Column(
           children: [
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.06,
+              height: MediaQuery.of(context).size.height * 0.04,
             ),
             Center(
               child: GestureDetector(
@@ -151,6 +154,16 @@ class _NewCategoryScreenState extends State<NewCategoryScreen> {
                             fit: BoxFit.cover,
                           ),
                         )
+                      : stockImage != null
+                      ? ClipRRect(
+                    borderRadius: BorderRadius.circular(50),
+                    child: Image.network(
+                      stockImage.toString(),
+                      width: 100,
+                      height: 100,
+                      fit: BoxFit.cover,
+                    ),
+                  )
                       : Container(
                           decoration: BoxDecoration(
                               color: Colors.grey[200],

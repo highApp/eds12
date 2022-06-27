@@ -358,7 +358,7 @@ class _RemainingStockState extends State<RemainingStock> {
                                               Row(
                                                 children: [
                                                   Text(
-                                                    stockItem.remainingAmount
+                                                    stockItem.quantity
                                                         .toString(),
                                                     style: TextStyle(
                                                         color: colorPrimary,
