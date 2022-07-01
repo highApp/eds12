@@ -250,56 +250,56 @@ class _EmployeeViewState extends State<EmployeeView> {
                         ),
                       ],
                     ),
-                    SizedBox(
-                      height: size.height * 0.025,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Previous Employer:",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: size.width * 0.039,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        Text(
-                          widget.singleUser!.oldEmployer == null
-                              ? ""
-                              : widget.singleUser!.oldEmployer,
-                          style: TextStyle(
-                            color: Colors.black.withOpacity(0.6),
-                            fontSize: size.width * 0.039,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: size.height * 0.02,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          "Previous Employer\nContact No:",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: size.width * 0.039,
-                              fontWeight: FontWeight.w600),
-                        ),
-                        Text(
-                          widget.singleUser?.oldEmployer == null
-                              ? ""
-                              : widget.singleUser!.oldEmployerPhone,
-                          style: TextStyle(
-                            color: Colors.black.withOpacity(0.6),
-                            fontSize: size.width * 0.039,
-                            fontWeight: FontWeight.w400,
-                          ),
-                        ),
-                      ],
-                    ),
+                    // SizedBox(
+                    //   height: size.height * 0.025,
+                    // ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Text(
+                    //       "Previous Employer:",
+                    //       style: TextStyle(
+                    //           color: Colors.black,
+                    //           fontSize: size.width * 0.039,
+                    //           fontWeight: FontWeight.w600),
+                    //     ),
+                    //     Text(
+                    //       widget.singleUser!.oldEmployer == null
+                    //           ? ""
+                    //           : widget.singleUser!.oldEmployer,
+                    //       style: TextStyle(
+                    //         color: Colors.black.withOpacity(0.6),
+                    //         fontSize: size.width * 0.039,
+                    //         fontWeight: FontWeight.w400,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
+                    // SizedBox(
+                    //   height: size.height * 0.02,
+                    // ),
+                    // Row(
+                    //   mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    //   children: [
+                    //     Text(
+                    //       "Previous Employer\nContact No:",
+                    //       style: TextStyle(
+                    //           color: Colors.black,
+                    //           fontSize: size.width * 0.039,
+                    //           fontWeight: FontWeight.w600),
+                    //     ),
+                    //     Text(
+                    //       widget.singleUser?.oldEmployer == null
+                    //           ? ""
+                    //           : widget.singleUser!.oldEmployerPhone,
+                    //       style: TextStyle(
+                    //         color: Colors.black.withOpacity(0.6),
+                    //         fontSize: size.width * 0.039,
+                    //         fontWeight: FontWeight.w400,
+                    //       ),
+                    //     ),
+                    //   ],
+                    // ),
                     SizedBox(
                       height: size.height * 0.03,
                     ),

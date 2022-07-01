@@ -42,7 +42,7 @@ class CategoryModel {
     required this.updatedAt,
   });
 
-  int id;
+  String id;
   String empid;
   String name;
   String image;

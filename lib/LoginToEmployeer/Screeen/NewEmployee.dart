@@ -125,7 +125,8 @@ class _NewEmployeeState extends State<NewEmployee> {
     //       btnDoneText: "ok",
     //       onDone: () {},
     //       onCancel: () {});
-    // } else
+    // }
+    // else
       if (txtusernameController.text == '') {
       HelperFunctions.showAlert(
           context: context,
@@ -248,7 +249,9 @@ class _NewEmployeeState extends State<NewEmployee> {
     FocusScope.of(context).requestFocus(FocusNode());
     CustomMultipartObject obj =
         CustomMultipartObject(file: _image, param: "image");
-    files.add(obj);
+    if (_image != null) {
+      files.add(obj);
+    }
     ApiCallMultiPart networkCall =
         ApiCallMultiPart(APIConstants.addnewEmployee, body, header);
 
@@ -322,7 +325,9 @@ class _NewEmployeeState extends State<NewEmployee> {
     if (_image != null) {
       CustomMultipartObject obj =
           CustomMultipartObject(file: _image, param: "image");
-      files.add(obj);
+      if (_image != null) {
+        files.add(obj);
+      }
     }
 
     ApiCallMultiPart networkCall =
@@ -414,7 +419,7 @@ class _NewEmployeeState extends State<NewEmployee> {
                       height: size.width * 0.23,
                       child: _image == null
                           ? Image.network(
-                              dummyImage,
+                              dummyImage.toString(),
                               fit: BoxFit.cover,
                             )
                           : Image.file(
