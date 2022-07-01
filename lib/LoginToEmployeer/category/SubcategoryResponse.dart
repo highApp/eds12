@@ -42,7 +42,7 @@ class SubcategModel {
     required this.updatedAt,
   });
 
-  String id;
+  var id;
   String cid;
   String name;
   String image;

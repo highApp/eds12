@@ -73,7 +73,9 @@ class HelperFunctions {
               style: TextStyle(color: Colors.white),
             ),
             onPressed: () {
-              Navigator.of(context).pop();
+              Navigator.of(context).pop(
+
+              );
               onDone();
             },
           );

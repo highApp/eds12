@@ -12,6 +12,7 @@ import 'package:flutter/scheduler.dart';
 
 class StockScreen extends StatefulWidget {
   String employerId = "";
+
   StockScreen({required this.employerId});
   @override
   _StockScreenState createState() => _StockScreenState();

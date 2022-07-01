@@ -27,6 +27,7 @@ class AddStockScreen extends StatefulWidget {
 }
 
 class _AddStockScreenState extends State<AddStockScreen> {
+  String? stockImage="https://eds.greenspoints.com/public/images/eds.png";
   final prodNameController = TextEditingController();
   final amountController = TextEditingController();
   final descController = TextEditingController();
@@ -102,7 +103,9 @@ class _AddStockScreenState extends State<AddStockScreen> {
     FocusScope.of(context).requestFocus(FocusNode());
     CustomMultipartObject obj =
         CustomMultipartObject(file: _image, param: "image");
-    files.add(obj);
+    if (_image != null) {
+      files.add(obj);
+    }
     ApiCallMultiPart networkCall =
         ApiCallMultiPart(APIConstants.addStock, body, header);
 
@@ -208,6 +211,16 @@ class _AddStockScreenState extends State<AddStockScreen> {
                                 fit: BoxFit.cover,
                               ),
                             )
+                          : stockImage != null
+                          ? ClipRRect(
+                        borderRadius: BorderRadius.circular(50),
+                        child: Image.network(
+                          stockImage.toString(),
+                          width: 100,
+                          height: 100,
+                          fit: BoxFit.cover,
+                        ),
+                      )
                           : Container(
                               decoration: BoxDecoration(
                                   color: Colors.grey[200],
