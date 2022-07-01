@@ -117,15 +117,16 @@ class _NewEmployeeState extends State<NewEmployee> {
   bool isLoading = false;
   _btnActionAddEmployee(BuildContext context) {
     FocusScope.of(context).requestFocus(new FocusNode());
-    if (_image == null) {
-      HelperFunctions.showAlert(
-          context: context,
-          header: "EDS",
-          widget: Text("Profile picture is required"),
-          btnDoneText: "ok",
-          onDone: () {},
-          onCancel: () {});
-    } else if (txtusernameController.text == '') {
+    // if (_image == null) {
+    //   HelperFunctions.showAlert(
+    //       context: context,
+    //       header: "EDS",
+    //       widget: Text("Profile picture is required"),
+    //       btnDoneText: "ok",
+    //       onDone: () {},
+    //       onCancel: () {});
+    // } else
+      if (txtusernameController.text == '') {
       HelperFunctions.showAlert(
           context: context,
           header: "EDS",
