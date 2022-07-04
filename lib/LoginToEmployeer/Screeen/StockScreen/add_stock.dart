@@ -123,7 +123,9 @@ class _AddStockScreenState extends State<AddStockScreen> {
           header: "Eds",
           widget: Text(response["message"]),
           btnDoneText: "ok",
-          onDone: () {},
+          onDone: () {
+            
+          },
           onCancel: () {},
         );
       } else {

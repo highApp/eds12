@@ -203,7 +203,7 @@ class _LoginState extends State<Login> {
     }
     if (!mounted) return;
     authenticated
-        ? Navigator.of(context).push(
+        ? Navigator.of(context).pushReplacement(
             MaterialPageRoute(
               builder: (context) => Dashboard(
                 employerId: employerid.toString(),
