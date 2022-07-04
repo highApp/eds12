@@ -124,7 +124,8 @@ class _AddStockScreenState extends State<AddStockScreen> {
           widget: Text(response["message"]),
           btnDoneText: "ok",
           onDone: () {
-            
+
+//fahad
           },
           onCancel: () {},
         );
