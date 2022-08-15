@@ -4,11 +4,15 @@ import 'package:eds/LoginToEmployeer/Screeen/StockScreen/profitObject.dart';
 import 'package:eds/LoginToEmployeer/Screeen/StockScreen/remaining_stock.dart';
 import 'package:eds/LoginToEmployeer/Screeen/StockScreen/stocks.dart';
 import 'package:eds/LoginToEmployeer/category/category.dart';
+import 'package:eds/conteroller/api%20_controller.dart';
 import 'package:eds/managers/api_manager.dart';
+import 'package:eds/models/bNameModel.dart';
+import 'package:eds/provider/core_provider.dart';
 import 'package:eds/utilities/api_constants.dart';
 import 'package:eds/utilities/helper_functions.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/scheduler.dart';
+import 'package:provider/provider.dart';
 
 class StockScreen extends StatefulWidget {
   String employerId = "";
@@ -86,9 +90,27 @@ class _StockScreenState extends State<StockScreen>
     );
   }
 
+
+
+  BNameModel? bNameModel;
+
+  Future<void> fetchBName() async {
+    ApiController().getBName(bid: widget.employerId).then((value) {
+      context.read<CoreProvider>().bNameModel = value;
+      bNameModel = value;
+      setState(() {
+        checkCategory = false;
+      });
+    });
+  }
+
+  bool checkCategory = true;
+
   @override
   void initState() {
     super.initState();
+    fetchBName();
+
     SchedulerBinding.instance!.addPostFrameCallback((_) {
       callAPIgetProfit(context);
     });

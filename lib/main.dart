@@ -1,8 +1,14 @@
 import 'package:eds/LoginType.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+
+import 'provider/core_provider.dart';
 
 void main() async {
-  runApp(MyApp());
+  runApp( MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => CoreProvider())],child:
+
+      MyApp()));
 }
 
 class MyApp extends StatelessWidget {

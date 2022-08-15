@@ -38,9 +38,11 @@ class APIConstants {
   static const addExpense = "addExpense";
   static const updateStock = "updateStock";
   static const printExpense = "printExpense";
+  static const printExpensePdf = "getPNameExpensesPDF";
   static const getProfit = "getProfit";
   static const delStock = "deleteStock";
   static const employerUpdate = "employerUpdate";
+  static const getPNames = "getPNames";
 
   // Employee Side
   static const employeeSignin = "employeeLogin";
