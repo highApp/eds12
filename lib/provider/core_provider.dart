@@ -12,8 +12,9 @@ class CoreProvider extends ChangeNotifier {
   // CategoryListModel? categoryListModel;
   BListModel? bListModel;
 
-  // TextEditingController startDateController = TextEditingController();
-  // TextEditingController endDateController = TextEditingController();
+
+  TextEditingController startDateController = TextEditingController();
+  TextEditingController endDateController = TextEditingController();
 
 
 }

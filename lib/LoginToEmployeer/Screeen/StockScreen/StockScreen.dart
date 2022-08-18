@@ -18,6 +18,7 @@ class StockScreen extends StatefulWidget {
   String employerId = "";
 
   StockScreen({required this.employerId});
+
   @override
   _StockScreenState createState() => _StockScreenState();
 }
@@ -89,8 +90,6 @@ class _StockScreenState extends State<StockScreen>
       ),
     );
   }
-
-
 
   BNameModel? bNameModel;
 
@@ -227,9 +226,11 @@ class _StockScreenState extends State<StockScreen>
                                           ?.response?.totalProfit
                                           .toString()),
                                   profitLoassRow(
-                                      prefixText: "Loss",
-                                      postFixText: profitObject?.response?.totalLose
-                                          .toString()),
+                                    prefixText: "Loss",
+                                    postFixText: profitObject
+                                        ?.response?.totalLose
+                                        .toStringAsFixed(4),
+                                  ),
                                 ],
                               ),
                             ),
