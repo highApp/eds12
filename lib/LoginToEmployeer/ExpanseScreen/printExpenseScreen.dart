@@ -51,7 +51,7 @@ class _PrintexpenseScreenState extends State<PrintexpenseScreen>
   String? _selectedLocation; // Option 2
   String? _selectedLocation1; // Option 2
   String? stockImage = "https://eds.greenspoints.com/public/images/eds.png";
-  String? stockImage1 = "https://eds.greenspoints.com/public/images/eds.png";
+  // String? stockImage1 = "https://eds.greenspoints.com/public/images/eds.png";
 
   final imagePicker = ImagePicker();
   File? _image;
@@ -107,24 +107,6 @@ class _PrintexpenseScreenState extends State<PrintexpenseScreen>
 
   _btnActionprint(BuildContext context) {
     FocusScope.of(context).requestFocus(new FocusNode());
-
-    // if (_image == null) {
-    //   HelperFunctions.showAlert(
-    //       context: context,
-    //       header: "EDS",
-    //       widget: Text("Logo is required"),
-    //       btnDoneText: "ok",
-    //       onDone: () {},
-    //       onCancel: () {});
-    // } else if (_selectedLocation == null) {
-    //   HelperFunctions.showAlert(
-    //       context: context,
-    //       header: "EDS",
-    //       widget: Text("Olease select logo is Position"),
-    //       btnDoneText: "ok",
-    //       onDone: () {},
-    //       onCancel: () {});
-    // } else
     if (fromDataController.text == '') {
       HelperFunctions.showAlert(
           context: context,
@@ -170,47 +152,6 @@ class _PrintexpenseScreenState extends State<PrintexpenseScreen>
       this._image1 = _image1;
     });
   }
-
-  // _btnActionprintPdf(BuildContext context) {
-  //   FocusScope.of(context).requestFocus(new FocusNode());
-  //
-  //   // if (_image == null) {
-  //   //   HelperFunctions.showAlert(
-  //   //       context: context,
-  //   //       header: "EDS",
-  //   //       widget: Text("Logo is required"),
-  //   //       btnDoneText: "ok",
-  //   //       onDone: () {},
-  //   //       onCancel: () {});
-  //   // } else if (_selectedLocation == null) {
-  //   //   HelperFunctions.showAlert(
-  //   //       context: context,
-  //   //       header: "EDS",
-  //   //       widget: Text("Olease select logo is Position"),
-  //   //       btnDoneText: "ok",
-  //   //       onDone: () {},
-  //   //       onCancel: () {});
-  //   // } else
-  //   if (startDateController.text == '') {
-  //     HelperFunctions.showAlert(
-  //         context: context,
-  //         header: "EDS",
-  //         widget: Text("start date is required"),
-  //         btnDoneText: "ok",
-  //         onDone: () {},
-  //         onCancel: () {});
-  //   } else if (endDateController.text == '') {
-  //     HelperFunctions.showAlert(
-  //         context: context,
-  //         header: "EDS",
-  //         widget: Text("end date is required"),
-  //         btnDoneText: "ok",
-  //         onDone: () {},
-  //         onCancel: () {});
-  //   } else {
-  //     _callPrintExpense(context);
-  //   }
-  // }
 
   bool isLoading = false;
 
@@ -312,15 +253,12 @@ class _PrintexpenseScreenState extends State<PrintexpenseScreen>
       }
     });
   }
-
-  String dropdownValue = 'Furniture & General items';
-
   TabController? _tabController;
 
   @override
   void initState() {
     super.initState();
-    _tabController = new TabController(vsync: this, length: 2);
+    _tabController = new TabController(vsync: this, length: 3);
   }
 
   @override
@@ -363,6 +301,9 @@ class _PrintexpenseScreenState extends State<PrintexpenseScreen>
                         unselectedLabelColor: colorPrimary,
                         tabs: [
                           Tab(
+                            text: 'Total Stock',
+                          ),
+                          Tab(
                             text: 'Total Sale',
                           ),
                           Tab(
@@ -379,6 +320,46 @@ class _PrintexpenseScreenState extends State<PrintexpenseScreen>
                         height: size.height,
                         child:
                             TabBarView(controller: _tabController, children: [
+                              //total stock
+                          SingleChildScrollView(
+                            physics: ScrollPhysics(),
+                            child: Column(
+                              children: [
+                                SizedBox(
+                                  height: size.height * 0.05,
+                                ),
+
+                                Text(
+                                  "Total Stock details in XML Formatter",
+                                  style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: size.height * 0.020),
+                                ),
+                                SizedBox(
+                                  height: size.height * 0.05,
+                                ),
+
+
+                                Center(
+                                  child: custom_btn(
+                                    onPressed: () async{
+
+                                      final stockPdf = ApiController().getStockListPdf(bid: widget.empId).then((value) => {
+                                        _openStockXml(value?.response ?? '')
+
+                                      });
+                                      // await _openStockXml(stockPdf.);
+
+                                    },
+                                    text: "Print",
+                                    textColor: colorWhite,
+                                    backcolor: colorPrimary,
+                                  ),
+                                )
+                              ],
+                            ),
+                          ),
                           SingleChildScrollView(
                             physics: ScrollPhysics(),
                             child: Column(
@@ -856,6 +837,16 @@ class _PrintexpenseScreenState extends State<PrintexpenseScreen>
         ),
       );
     });
+  }
+
+  _openStockXml(String fileName) async {
+    String url = fileName;
+    print(url);
+    if (await canLaunch(url)) {
+      await launch(url);
+    } else {
+      throw 'Konnte nicht gestartet werden $url';
+    }
   }
 }
 

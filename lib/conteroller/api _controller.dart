@@ -4,6 +4,7 @@ import 'package:dio/dio.dart';
 import 'package:eds/models/Employee/pdfModel.dart';
 import 'package:eds/models/bNameListModel.dart';
 import 'package:eds/models/bNameModel.dart';
+import 'package:eds/models/stockModel.dart';
 import 'package:flutter/material.dart';
 
 class ApiController {
@@ -77,6 +78,39 @@ class ApiController {
   }
 
 //
+  //stockList
+  Future<StockModel?> getStockListPdf({String? bid}) async {
+    final data = {
+      'empid': bid,
+    };
+    final formData = FormData.fromMap(data);
+    const url = "https://eds.greenspoints.com/public/api/getAllStock";
+    try {
+      debugPrint('API StockCall 1');
+      Response response = await dio!.post(
+        url,
+        data: formData,
+      );
+      debugPrint('API pasteventappliedjobs Call 2');
+      if (response.statusCode == 200) {
+        print(response);
+        //  debugPrint(
+        //   'statusCode - ${response.statusCode} - Response - ${response.data}');
+        return StockModel.fromJson(response.data);
+      }
+      throw response.data;
+    } on DioError catch (e) {
+      // print(e.response!.data["message"]);
+
+      rethrow;
+    }
+  }
+
+
+
+
+
+  //
 
   Future<BListModel?> getlist({
     String? bid,

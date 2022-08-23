@@ -2,6 +2,7 @@
 
 import 'package:eds/models/bNameListModel.dart';
 import 'package:eds/models/bNameModel.dart';
+import 'package:eds/models/stockModel.dart';
 import 'package:flutter/cupertino.dart';
 
 class CoreProvider extends ChangeNotifier {
@@ -11,6 +12,7 @@ class CoreProvider extends ChangeNotifier {
   // BListModel? bListModel;
   // CategoryListModel? categoryListModel;
   BListModel? bListModel;
+  StockModel? stockModel;
 
 
   TextEditingController startDateController = TextEditingController();
