@@ -371,6 +371,7 @@ class _RemainingStockState extends State<RemainingStock> {
                                                             MaterialPageRoute(
                                                                 builder: (context) =>
                                                                     UpdateStockcreen(
+                                                                      empId: widget.employerId,
                                                                         stockItem:
                                                                             stockItem)));
                                                       },
@@ -385,6 +386,7 @@ class _RemainingStockState extends State<RemainingStock> {
                                                                 builder:
                                                                     (context) =>
                                                                         ExpenseScreen(
+                                                                           empId: widget.employerId,
                                                                           singleStock:
                                                                               stockItem,
                                                                         )));

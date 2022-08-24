@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:developer';
 
+import 'package:eds/LoginToEmployeer/Screeen/StockScreen/StockScreen.dart';
 import 'package:eds/Widget/LabelWidget.dart';
 import 'package:eds/Widget/btn_widget.dart';
 import 'package:eds/managers/api_manager.dart';
@@ -13,7 +14,9 @@ import '../../Color.dart';
 
 class ExpenseScreen extends StatefulWidget {
   Stock singleStock;
-  ExpenseScreen({required this.singleStock});
+  final String empId;
+
+  ExpenseScreen({required this.singleStock,required this.empId});
   @override
   _ExpenseScreenState createState() => _ExpenseScreenState();
 }
@@ -90,7 +93,14 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
           btnDoneText: "ok",
           onDone: () {
             quantityController.clear();
-            Navigator.pop(context);
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => StockScreen(
+                  employerId: widget.empId,
+                ),
+              ),
+            );
+            // Navigator.pop(context);
           },
           onCancel: () {
             quantityController.clear();

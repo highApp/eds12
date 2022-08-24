@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:eds/Color.dart';
+import 'package:eds/LoginToEmployeer/Screeen/StockScreen/StockScreen.dart';
 
 import 'package:eds/Widget/LabelWidget.dart';
 import 'package:eds/Widget/btn_widget.dart';
@@ -18,8 +19,10 @@ import 'package:image_picker/image_picker.dart';
 
 class UpdateStockcreen extends StatefulWidget {
   Stock stockItem;
+  final String empId;
 
-  UpdateStockcreen({required this.stockItem});
+
+  UpdateStockcreen({required this.stockItem,required this.empId});
 
   @override
   _UpdateStockcreenState createState() => _UpdateStockcreenState();
@@ -138,7 +141,16 @@ class _UpdateStockcreenState extends State<UpdateStockcreen> {
           header: "Eds",
           widget: Text(response["message"]),
           btnDoneText: "ok",
-          onDone: () {},
+          onDone: () {
+
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => StockScreen(
+                  employerId: widget.empId,
+                ),
+              ),
+            );
+          },
           onCancel: () {},
         );
       } else {
@@ -147,7 +159,15 @@ class _UpdateStockcreenState extends State<UpdateStockcreen> {
           header: "Eds",
           widget: Text(response["message"]),
           btnDoneText: "ok",
-          onDone: () {},
+          onDone: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => StockScreen(
+                  employerId: widget.empId,
+                ),
+              ),
+            );
+          },
           onCancel: () {},
         );
       }

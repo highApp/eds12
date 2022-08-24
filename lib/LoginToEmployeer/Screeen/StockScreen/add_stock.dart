@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'dart:io';
 
 import 'package:eds/Color.dart';
+import 'package:eds/LoginToEmployeer/Screeen/StockScreen/StockScreen.dart';
 import 'package:eds/LoginToEmployeer/category/SubcategoryResponse.dart';
 import 'package:eds/LoginToEmployeer/category/categoryResponse.dart';
 import 'package:eds/Widget/LabelWidget.dart';
@@ -19,8 +20,10 @@ import 'package:image_picker/image_picker.dart';
 class AddStockScreen extends StatefulWidget {
   CategoryModel? categoryModel;
   SubcategModel? subcategModel;
+  final String empId;
 
-  AddStockScreen({required this.categoryModel, required this.subcategModel});
+
+  AddStockScreen({required this.categoryModel, required this.subcategModel,required this.empId});
 
   @override
   _AddStockScreenState createState() => _AddStockScreenState();
@@ -124,6 +127,14 @@ class _AddStockScreenState extends State<AddStockScreen> {
           widget: Text(response["message"]),
           btnDoneText: "ok",
           onDone: () {
+            //fdchange
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => StockScreen(
+                  employerId: widget.empId,
+                ),
+              ),
+            );
 
 //fahad
           },
@@ -135,7 +146,15 @@ class _AddStockScreenState extends State<AddStockScreen> {
           header: "Eds",
           widget: Text(response["message"]),
           btnDoneText: "ok",
-          onDone: () {},
+          onDone: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (context) => StockScreen(
+                  employerId: widget.empId,
+                ),
+              ),
+            );
+          },
           onCancel: () {},
         );
       }

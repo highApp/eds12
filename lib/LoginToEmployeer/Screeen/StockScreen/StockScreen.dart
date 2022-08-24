@@ -214,7 +214,10 @@ class _StockScreenState extends State<StockScreen>
                                       prefixText: "Total Expense",
                                       postFixText: profitObject
                                           ?.response?.totalExpense
-                                          .toString()),
+                                          .toStringAsFixed(4),
+
+
+                                  ),
                                   profitLoassRow(
                                       prefixText: "Remaining",
                                       postFixText: profitObject
@@ -224,7 +227,9 @@ class _StockScreenState extends State<StockScreen>
                                       prefixText: "Profit",
                                       postFixText: profitObject
                                           ?.response?.totalProfit
-                                          .toString()),
+                                          .toString()
+
+                                  ),
                                   profitLoassRow(
                                     prefixText: "Loss",
                                     postFixText: profitObject

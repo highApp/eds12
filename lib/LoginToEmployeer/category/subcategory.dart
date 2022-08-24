@@ -13,8 +13,10 @@ import 'package:flutter/scheduler.dart';
 
 class Subcategory extends StatefulWidget {
   final CategoryModel? Model;
+  final String empId;
 
-  Subcategory({Key? key, required this.Model}) : super(key: key);
+
+  Subcategory({Key? key, required this.Model,required this.empId}) : super(key: key);
 
   @override
   _SubcategoryState createState() => _SubcategoryState();
@@ -108,7 +110,7 @@ class _SubcategoryState extends State<Subcategory> {
                       return InkWell(
                         onTap: () {
                           Navigator.of(context).push(MaterialPageRoute(
-                              builder: (context) => AddStockScreen(
+                              builder: (context) => AddStockScreen(empId: widget.empId,
                                   categoryModel: widget.Model,
                                   subcategModel: subcategorymodel)));
 

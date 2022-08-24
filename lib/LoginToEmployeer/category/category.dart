@@ -102,7 +102,7 @@ class _categoryState extends State<category> {
                               context,
                               MaterialPageRoute(
                                   builder: (context) => Subcategory(
-                                        Model: category,
+                                        Model: category, empId: widget.employerId,
                                       )),
                             );
                           },
