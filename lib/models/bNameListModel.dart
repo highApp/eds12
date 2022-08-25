@@ -71,7 +71,7 @@ class BListModel {
 
   bool? status;
   List<Expense>? expenses;
-  double? totalExpenseAmount;
+  var totalExpenseAmount;
 
   factory BListModel.fromJson(Map<String, dynamic> json) {
     return BListModel(
