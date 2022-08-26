@@ -17,6 +17,7 @@ class CoreProvider extends ChangeNotifier {
 
   TextEditingController startDateController = TextEditingController();
   TextEditingController endDateController = TextEditingController();
-
+  // TextEditingController addressController = TextEditingController();
+  // TextEditingController vatRegController = TextEditingController();
 
 }

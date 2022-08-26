@@ -25,6 +25,8 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
   final quantityController = TextEditingController();
   final saleamontController = TextEditingController();
   final pnameController = TextEditingController();
+  final addressUController = TextEditingController();
+  final vatController = TextEditingController();
   bool isLoading = false;
 
   _btnActionaddQuantity(BuildContext context) {
@@ -68,6 +70,7 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
     body['quantity'] = quantityController.text;
     body['saleAmount'] = saleamontController.text;
     body['pname'] = pnameController.text;
+    body['vat'] = vatController.text ?? '0';
 
     Map<String, String> header = Map<String, String>();
     log(jsonEncode(body));
@@ -93,6 +96,9 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
           btnDoneText: "ok",
           onDone: () {
             quantityController.clear();
+            addressUController.clear();
+            vatController.clear();
+
             Navigator.of(context).push(
               MaterialPageRoute(
                 builder: (context) => StockScreen(
@@ -344,6 +350,12 @@ class _ExpenseScreenState extends State<ExpenseScreen> {
                             LabelWidget(
                               labelText: "Add Payee Name",
                               controller: pnameController,
+                            ),
+                            LabelWidget(
+                              labelText: 'VAT Tex  (Optional)',
+                              max: 1,
+                              controller: vatController,
+                              inputType: TextInputType.number,
                             ),
                             custom_btn(
                               onPressed: () {

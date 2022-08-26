@@ -150,6 +150,8 @@ class ApiController {
     String? startDate1,
     String? endDate1,
     String? position,
+    String? address,
+    String? vatReg,
     File? documentOne,
   }) async {
     final data = {
@@ -159,6 +161,8 @@ class ApiController {
       'end_date': endDate1,
       'logo': documentOne,
       'position': position,
+      'company_address':address,
+      'vat_registration_no':vatReg
     };
     if (documentOne != null) {
       final fileName2 = documentOne.path.split("/").last;

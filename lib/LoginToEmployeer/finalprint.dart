@@ -36,6 +36,9 @@ class FinalPrintDetailsScreen extends StatefulWidget {
 
 class _FinalPrintDetailsScreenState extends State<FinalPrintDetailsScreen>
     with SingleTickerProviderStateMixin {
+
+  TextEditingController addressController = TextEditingController();
+  TextEditingController vatRegController = TextEditingController();
   String? stockImage1 = "https://eds.greenspoints.com/public/images/eds.png";
 
   // File? _image1;
@@ -69,7 +72,7 @@ class _FinalPrintDetailsScreenState extends State<FinalPrintDetailsScreen>
           CircleAvatar(
             radius: 80,
             backgroundImage: _imageFile == null
-                ? AssetImage('assets/images/asemp.png')
+                ? AssetImage('assets/images/eds.png')
                 : FileImage(File(_imageFile!.path)) as ImageProvider,
           ),
           Positioned(
@@ -143,6 +146,13 @@ class _FinalPrintDetailsScreenState extends State<FinalPrintDetailsScreen>
   void initState() {
     super.initState();
   }
+  @override
+  void dispose() {
+
+    super.dispose();
+    vatRegController.clear();
+    addressController.clear();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -180,58 +190,77 @@ class _FinalPrintDetailsScreenState extends State<FinalPrintDetailsScreen>
               body: SafeArea(
                 child: Padding(
                     padding: const EdgeInsets.all(15.0),
-                    child: Column(
-                      children: [
-                        imageProfile(),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        Text(
-                          "Select Logo",
-                          style: TextStyle(
-                              color: Colors.black,
-                              fontSize: size.width * 0.034),
-                        ),
-                        SizedBox(
-                          height: size.height * 0.01,
-                        ),
-                        Center(
-                          child: DropdownButton<String>(
-                            underline: Divider(
-                              color: colorPrimary,
-                            ),
-                            hint: Text('Please choose logo location'),
-                            // Not necessary for Option 1
-                            value: _selectedLocation1,
-                            onChanged: (newValue) {
-                              _selectedLocation1 = newValue;
-                              setState(() {});
-                            },
-                            items: _locations1.map((location1) {
-                              return DropdownMenuItem(
-                                child: new Text(location1),
-                                value: location1,
-                              );
-                            }).toList(),
+                    child: SingleChildScrollView(
+                      child: Column(
+                        children: [
+                          imageProfile(),
+                          SizedBox(
+                            height: size.height * 0.01,
                           ),
-                        ),
-                        custom_btn(
-                          onPressed: () async {
-                            final pdf = await ApiController().getPdf(
-                              bid1: widget.empID,
-                              pid1: appPro.selectedbName,
-                              startDate1: appPro.startDateController.text,
-                              endDate1: appPro.endDateController.text,
-                              position: _selectedLocation1,
-                              documentOne: File(_imageFile!.path),
-                            );
-                            await _openPDF(pdf?.expensesPdf ?? '');
-                          },
-                          text: "Final Print",
-                          textColor: colorWhite,
-                          backcolor: colorPrimary,
-                        )
-                      ],
+                          Text(
+                            "Select Logo",
+                            style: TextStyle(
+                                color: Colors.black,
+                                fontSize: size.width * 0.034),
+                          ),
+                          SizedBox(
+                            height: size.height * 0.01,
+                          ),
+                          Center(
+                            child: DropdownButton<String>(
+                              underline: Divider(
+                                color: colorPrimary,
+                              ),
+                              hint: Text('Please choose logo location'),
+                              // Not necessary for Option 1
+                              value: _selectedLocation1,
+                              onChanged: (newValue) {
+                                _selectedLocation1 = newValue;
+                                setState(() {});
+                              },
+                              items: _locations1.map((location1) {
+                                return DropdownMenuItem(
+                                  child: new Text(location1),
+                                  value: location1,
+                                );
+                              }).toList(),
+                            ),
+                          ),
+
+                          LabelWidget(
+                            labelText: "Address",
+                            controller: addressController ,
+                          ),
+                          LabelWidget(
+                            labelText: "Vat Registration No",
+                            controller: vatRegController ,
+                            inputType: TextInputType.number,
+
+                          ),
+
+                          custom_btn(
+                            onPressed: () async {
+                              final pdf = await ApiController().getPdf(
+                                bid1: widget.empID,
+                                pid1: appPro.selectedbName,
+                                startDate1: appPro.startDateController.text,
+                                endDate1: appPro.endDateController.text,
+                                position: _selectedLocation1,
+                                documentOne: File(_imageFile!.path),
+                                address: addressController.text,
+                                vatReg: vatRegController.text,
+                              );
+                              await _openPDF(pdf?.expensesPdf ?? '');
+                            },
+
+
+
+                            text: "Print",
+                            textColor: colorWhite,
+                            backcolor: colorPrimary,
+                          )
+                        ],
+                      ),
                     )),
               )),
         );
